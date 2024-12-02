@@ -1,5 +1,6 @@
 package cdss.assignment2.backend.configuration.jwt;
 
+import cdss.assignment2.backend.model.Account;
 import cdss.assignment2.backend.services.AccountService;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -66,10 +67,7 @@ public class JWTFilterValidator extends BasicAuthenticationFilter {
                 .verify(token)
                 .getSubject();
 
-        if (!this.accountService.checkUserExistence(username)) {
-            throw new RuntimeException("JWT content is not valid " + username);
-        }
-
-        return new UsernamePasswordAuthenticationToken(username,null, new ArrayList<>());
+        Account account = this.accountService.loadUserByUsername(username);
+        return new UsernamePasswordAuthenticationToken(account.getUsername(),null, new ArrayList<>());
     }
 }
