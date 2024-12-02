@@ -1,4 +1,4 @@
-package cdss.uc.backend;
+package cdss.assignment2.backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
