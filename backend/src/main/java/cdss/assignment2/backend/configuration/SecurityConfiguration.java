@@ -1,14 +1,17 @@
 package cdss.assignment2.backend.configuration;
 
 import cdss.assignment2.backend.configuration.jwt.JWTAuthenticationFilter;
+import cdss.assignment2.backend.configuration.jwt.JWTFilterValidator;
 import cdss.assignment2.backend.services.AccountService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,33 +29,33 @@ public class SecurityConfiguration {
 
     private final AccountService accountService;
 
+    @Lazy
     public SecurityConfiguration(AccountService accountService) {
         this.accountService = accountService;
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        // http
-        //         .csrf().disable()
-        //         //  withDefaults() uses by default a Bean by the name of corsConfigurationSource
-        //         .cors(withDefaults())
-        //         .authorizeHttpRequests()
-        //         .requestMatchers(HttpMethod.POST, "/api/v**/accounts/register", "/login").permitAll()
-        //         .requestMatchers(HttpMethod.GET, "/api/v**/**").permitAll()
-        //         .anyRequest().authenticated()
-        //         .and()
-        //         .addFilter(new JWTAuthenticationFilter(authenticationManager()))
-        //         .addFilter(new JWTFilterValidator(authenticationManager(), this.accountDetailsService))
-        //         .sessionManagement()
-        //         .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        http
+                .csrf(AbstractHttpConfigurer::disable)
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .authorizeHttpRequests(auth ->
+                    auth.requestMatchers("/text", "/login").permitAll()
+                            .requestMatchers(HttpMethod.GET, "/api/v**/**").permitAll()
+                            .anyRequest().authenticated()
+                )
+                .addFilter(new JWTAuthenticationFilter(authenticationManager()))
+                .addFilter(new JWTFilterValidator(authenticationManager(), this.accountService))
+                .sessionManagement(session ->
+                    session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                );
 
         return http.build();
     }
 
-    @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:8080/"));
+        configuration.setAllowedOrigins(List.of("null"));
         configuration.setAllowedMethods(List.of("GET","POST", "PUT", "DELETE", "OPTIONS"));
         configuration.addAllowedHeader("*");
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

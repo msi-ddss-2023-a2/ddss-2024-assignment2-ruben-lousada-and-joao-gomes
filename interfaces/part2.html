@@ -98,31 +98,37 @@
                         <th><b>Output Box</b></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tbody">
+                <!--<tr><td><script>setTimeout(function() {        alert('This is anASDASDASADAS XSS attack!');    }, 0);</script></td>-->
                     <tr>
-                        <td>
-                            <em>You should print the text here. Some examples below. 
-                                These examples should be replaced by the information you obtain from the database.</em>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Vulnerable: Hi! I wrote this message using Vulnerable Form.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Correct: OMG! This form is so correct!!!
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Vulnerable: Oh really?
-                            <script>
-                                window.alert('Is it?');
-                            </script>
-                        </td>
-                    </tr>
+                    <script>
+                        async function getData() {
+                            const url = "http://localhost:8090/text";
+                            try {
+                                const response = await fetch(url);
+                                console.log(response)
+                                if (!response.ok) {
+                                    throw new Error(`Response status: ${response.status}`);
+                                }
+
+                                const json = await response.json();
+                                console.log(json)
+                                let element = document.getElementById("tbody");
+
+
+                                for (const value of json) {
+                                    element.innerHTML += "<tr><td>" + value.text + " </td></tr>";
+
+                                    //console.log(value.text)
+                                }
+                            } catch (error) {
+                                console.error(error.message);
+                            }
+                        }
+
+                        getData()
+                    </script>
+
                 </tbody>
             </table>
         </div>

@@ -32,7 +32,7 @@ public class AccountService implements UserDetailsService {
         return account.get();
     }
 
-    public void signup(AccountCreationRequest request) {
+    public Account signup(AccountCreationRequest request) {
         Optional<Account> accountByEmail = this.userRepository.findByUsername(request.getUsername());
         if (accountByEmail.isPresent()) {
             throw new RuntimeException("Username is already in use");
@@ -46,6 +46,6 @@ public class AccountService implements UserDetailsService {
         account.setAge(request.getAge());
         account.setPassword(encodedPass);
 
-        this.userRepository.save(account);
+        return this.userRepository.save(account);
     }
 }

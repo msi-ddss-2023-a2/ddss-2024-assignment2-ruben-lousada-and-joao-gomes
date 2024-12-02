@@ -25,7 +25,7 @@ import java.util.Date;
 @PropertySource(value = {"classpath:application.properties"})
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    private String secret = "secret-key-that-should-come-from-environmental-value";
+    private final String secret = "secret-key-that-should-come-from-environmental-value";
 
     private final AuthenticationManager authenticationManager;
 
@@ -39,10 +39,14 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             HttpServletRequest request,
             HttpServletResponse response
     ) throws AuthenticationException {
-        AccountLoginRequest loginRequest = new ObjectMapper().readValue(request.getInputStream(), AccountLoginRequest.class);
-        AbstractAuthenticationToken authenticationToken;
-        authenticationToken = new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword());
-        return authenticationManager.authenticate(authenticationToken);
+        try {
+            AccountLoginRequest accountLoginRequest = new ObjectMapper().readValue(request.getInputStream(), AccountLoginRequest.class);
+            AbstractAuthenticationToken authenticationToken;
+            authenticationToken = new UsernamePasswordAuthenticationToken(accountLoginRequest.getUsername(), accountLoginRequest.getPassword());
+            return authenticationManager.authenticate(authenticationToken);
+        } catch(IOException e) {
+            return authenticationManager.authenticate(null);
+        }
     }
 
     @Override
