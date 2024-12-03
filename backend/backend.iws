@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3530e99c-6f31-4d13-8f31-3943e2f88e2a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.devcontainer/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.devcontainer/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/backend.ipr" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/utils/XssUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../interfaces/part2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend.iws" beforeDir="false" afterPath="$PROJECT_DIR$/backend.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/configuration/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/configuration/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/controller/TextController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/controller/TextController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cdss/assignment2/backend/configuration/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdss/assignment2/backend/configuration/SecurityConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cdss/assignment2/backend/controller/TextController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdss/assignment2/backend/controller/TextController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../interfaces/part2.html" beforeDir="false" afterPath="$PROJECT_DIR$/../interfaces/part2.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,6 +184,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Dockerfile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -264,7 +269,7 @@
     "Spring Boot.BackendApplication.executor": "Run",
     "git-widget-placeholder": "spring__boot",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/lousada/Desktop/cdss/ddss-2024-assignment2-ruben-lousada-and-joao-gomes-main/interfaces",
+    "last_opened_file_path": "C:/Users/Ruben/Desktop/cdss/ddss-2024-assignment2-ruben-lousada-and-joao-gomes/interfaces",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -390,7 +395,7 @@
       <option name="presentableId" value="Default" />
       <updated>1733167387653</updated>
       <workItem from="1733168338345" duration="5222000" />
-      <workItem from="1733187743076" duration="100000" />
+      <workItem from="1733187743076" duration="1994000" />
     </task>
     <servers />
   </component>

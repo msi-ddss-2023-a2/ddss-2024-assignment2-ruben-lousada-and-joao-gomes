@@ -43,7 +43,7 @@
             <br>
 
 
-            <form action="/part2_vulnerable">
+            <form onsubmit="handleBadSubmit(event)">
                 <table  style="width: 500px ; background-color:#f1f1f1" border="1" cellpadding="1" >
                     <thead>
                         <tr>
@@ -55,7 +55,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><textarea style="width: 100%; height: 100px" placeholder="Enter Text" name="v_text" required>
+                            <td><textarea style="width: 100%; height: 100px" id="b_text" placeholder="Enter Text" name="text" required>
                                 </textarea>
                             </td>
                         </tr>
@@ -70,7 +70,7 @@
             <br>
             <br>
 
-            <form action="/part2_correct">
+            <form onsubmit="handleGoodSubmit(event)">
                 <table  style="width: 500px ; background-color:#f19191" border="1" cellpadding="1" >
                     <thead>
                         <tr>
@@ -79,7 +79,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><textarea style="width: 100%; height: 100px" placeholder="Enter Text" name="c_text" required> </textarea>
+                            <td><textarea style="width: 100%; height: 100px" id="c_text" placeholder="Enter Text" name="text" required> </textarea>
                             </td>
                         </tr>
                         <tr>
@@ -101,34 +101,7 @@
                 <tbody id="tbody">
                 <!--<tr><td><script>setTimeout(function() {        alert('This is anASDASDASADAS XSS attack!');    }, 0);</script></td>-->
                     <tr>
-                    <script>
-                        async function getData() {
-                            const url = "http://localhost:8090/text";
-                            try {
-                                const response = await fetch(url);
-                                console.log(response)
-                                if (!response.ok) {
-                                    throw new Error(`Response status: ${response.status}`);
-                                }
-
-                                const json = await response.json();
-                                console.log(json)
-                                let element = document.getElementById("tbody");
-
-
-                                for (const value of json) {
-                                    element.innerHTML += "<tr><td>" + value.text + " </td></tr>";
-
-                                    //console.log(value.text)
-                                }
-                            } catch (error) {
-                                console.error(error.message);
-                            }
-                        }
-
-                        getData()
-                    </script>
-
+                        <script src="part2.js"></script>
                 </tbody>
             </table>
         </div>
