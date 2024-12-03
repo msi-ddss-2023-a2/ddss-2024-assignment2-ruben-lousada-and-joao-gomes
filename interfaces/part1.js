@@ -18,10 +18,23 @@ async function login(event) {
     }
 }
 
+function validatePassword(password) {
+    // Define the regex pattern
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,}$/;
+
+    // Test the password against the pattern
+    return passwordRegex.test(password)
+}
+
 async function register(event) {
     event.preventDefault()
     const email = document.getElementById('register_email').value;
     const password = document.getElementById('register_password').value;
+
+    if (!validatePassword(password)) {
+        alert("Password must be at least 8 characters long, include at least one uppercase letter, one lowercase letter, one number, and one special character.")
+        return
+    }
 
     const bad = await fetch('http://localhost:8090/accounts', {
         method: 'POST',
