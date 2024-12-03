@@ -43,28 +43,24 @@
             <br>
 
 
-            <form action="/part1_vulnerable">
+            <form onsubmit="register(event)">
                 <table  border="1" cellpadding="1" style="width: 300px; background-color:#f1f1f1">
                     <thead>
                         <tr>
-                            <th colspan="2"><b>Part 1.0 - Vulnerable Form</b></th>
+                            <th colspan="2"><b>Part 1.0 - Registration Form</b></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><label>Username</label></td>
-                            <td><input type="text" placeholder="Enter Username" name="v_username" required></td>
+                            <td><input type="email" placeholder="Enter Email" id="register_email" required></td>
                         </tr>
                         <tr>
                             <td><label>Password</label> </td>
-                            <td><input type="password" placeholder="Enter Password" name="v_password" required> </td>
+                            <td><input type="password" placeholder="Enter Password" id="register_password" required> </td>
                         </tr>
                         <tr>
-                            <td><label>Remember me</label></td>
-                            <td><input  type="checkbox" checked="checked" name="v_remember"></td>
-                        </tr>
-                        <tr>
-                            <td align="right" colspan="2"><button type="submit">Login</button></td>
+                            <td align="right" colspan="2"><button type="submit">Register</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -73,7 +69,7 @@
             <br>
             <br>
 
-            <form action="/part1_correct">
+            <form onsubmit="login(event)">
                 <table  style="width: 300px ; background-color:#f19191" border="1" cellpadding="1">
                     <thead>
                         <tr>
@@ -83,15 +79,15 @@
                     <tbody>
                         <tr>
                             <td><label>Username</label></td>
-                            <td><input type="text" placeholder="Enter Username" name="c_username" required></td>
+                            <td><input type="text" placeholder="Enter Username" id="login_email" required></td>
                         </tr>
                         <tr>
                             <td><label>Password</label> </td>
-                            <td><input type="password" placeholder="Enter Password" name="c_password" required> </td>
+                            <td><input type="password" placeholder="Enter Password" id="login_password" required> </td>
                         </tr>
                         <tr>
                             <td><label>Remember me</label></td>
-                            <td><input  type="checkbox" checked="checked" name="c_remember"></td>
+                            <td><input  type="checkbox" checked="checked" id="c_remember"></td>
                         </tr>
                         <tr>
                             <td align="right" colspan="2"><button type="submit">Login</button></td>
@@ -101,5 +97,6 @@
                 </table>
             </form> 
         </div>
+        <script src="part1.js"></script>
     </body>
 </html>
