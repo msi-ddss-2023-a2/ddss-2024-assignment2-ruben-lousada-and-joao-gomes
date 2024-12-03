@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3530e99c-6f31-4d13-8f31-3943e2f88e2a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/backend.iws" beforeDir="false" afterPath="$PROJECT_DIR$/backend.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/dto/AccountCreationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/dto/AccountCreationRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/services/AccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cdss/assignment2/backend/dto/AccountCreationRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdss/assignment2/backend/dto/AccountCreationRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/configuration/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/configuration/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/controller/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cdss/assignment2/backend/configuration/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdss/assignment2/backend/configuration/SecurityConfiguration.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../interfaces/part1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../interfaces/part1.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../interfaces/part1.js" beforeDir="false" afterPath="$PROJECT_DIR$/../interfaces/part1.js" afterDir="false" />
     </list>
@@ -393,7 +393,7 @@
       <option name="presentableId" value="Default" />
       <updated>1733167387653</updated>
       <workItem from="1733168338345" duration="5222000" />
-      <workItem from="1733187743076" duration="2994000" />
+      <workItem from="1733187743076" duration="3361000" />
     </task>
     <servers />
   </component>

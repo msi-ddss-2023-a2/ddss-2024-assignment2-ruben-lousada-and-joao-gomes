@@ -5,10 +5,7 @@ import cdss.assignment2.backend.model.Account;
 import cdss.assignment2.backend.repository.UserRepository;
 import cdss.assignment2.backend.services.AccountService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("accounts")
 @RestController
@@ -21,7 +18,7 @@ public class AccountController {
     }
 
     @PostMapping
-    public Account createAccount(AccountCreationRequest accountCreationRequest) {
+    public Account createAccount(@RequestBody  AccountCreationRequest accountCreationRequest) {
         return this.accountService.signup(accountCreationRequest);
     }
 }
