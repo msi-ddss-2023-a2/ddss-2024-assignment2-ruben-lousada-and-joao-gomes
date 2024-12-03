@@ -32,6 +32,12 @@ public class AccountService implements UserDetailsService {
         return account.get();
     }
 
+    private static final String PASSWORD_PATTERN =
+            "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,}$";
+
+    // Compile the regex pattern
+    private static final Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
+
     public Account signup(AccountCreationRequest request) {
         Optional<Account> accountByEmail = this.userRepository.findByUsername(request.getEmail());
         if (accountByEmail.isPresent()) {
