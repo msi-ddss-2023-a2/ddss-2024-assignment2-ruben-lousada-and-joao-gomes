@@ -1,6 +1,7 @@
 package cdss.assignment2.backend.dto;
 
 import cdss.assignment2.backend.model.Account;
+import jakarta.validation.constraints.Email;
 import lombok.Data;
 import lombok.Getter;
 
