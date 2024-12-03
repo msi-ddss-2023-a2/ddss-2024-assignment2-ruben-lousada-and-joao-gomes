@@ -13,4 +13,8 @@ public interface UserRepository extends JpaRepository<Account, Integer> {
 
     @Query("SELECT u FROM Account u WHERE u.email LIKE :username")
     Optional<Account> findByUsername(String username);
+
+    @Modifying
+    @Query("UPDATE Account u SET u.failedLoginAttempts = u.failedLoginAttempts + 1 WHERE u.email = :username")
+    void incrementFailedLoginAttempts(String username);
 }
