@@ -9,7 +9,6 @@ public class AccountCreationRequest {
 
     private String password;
 
-    private Short age;
 
     public String getEmail() {
         return email;
@@ -25,13 +24,5 @@ public class AccountCreationRequest {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Short getAge() {
-        return age;
-    }
-
-    public void setAge(Short age) {
-        this.age = age;
     }
 }

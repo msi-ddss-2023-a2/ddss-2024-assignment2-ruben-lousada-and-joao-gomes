@@ -42,7 +42,6 @@ public class AccountService implements UserDetailsService {
 
         Account account = new Account();
         account.setEmail(request.getEmail());
-        account.setAge(request.getAge());
         account.setPassword(encodedPass);
 
         return this.userRepository.save(account);
