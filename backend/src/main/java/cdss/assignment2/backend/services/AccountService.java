@@ -22,8 +22,8 @@ public class AccountService implements UserDetailsService {
     }
 
     @Override
-    public Account loadUserByUsername(String username) {
-        Optional<Account> account = this.userRepository.findByUsername(username);
+    public Account loadUserByUsername(String email) {
+        Optional<Account> account = this.userRepository.findByUsername(email);
 
         if (account.isEmpty()) {
             throw new UsernameNotFoundException("Username not found");
@@ -33,7 +33,7 @@ public class AccountService implements UserDetailsService {
     }
 
     public Account signup(AccountCreationRequest request) {
-        Optional<Account> accountByEmail = this.userRepository.findByUsername(request.getUsername());
+        Optional<Account> accountByEmail = this.userRepository.findByUsername(request.getEmail());
         if (accountByEmail.isPresent()) {
             throw new RuntimeException("Username is already in use");
         }
@@ -41,7 +41,6 @@ public class AccountService implements UserDetailsService {
         String encodedPass = this.passwordEncoder.encode(request.getPassword());
 
         Account account = new Account();
-        account.setUsername(request.getUsername());
         account.setEmail(request.getEmail());
         account.setAge(request.getAge());
         account.setPassword(encodedPass);

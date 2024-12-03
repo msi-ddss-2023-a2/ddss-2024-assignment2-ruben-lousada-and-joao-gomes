@@ -47,7 +47,6 @@ public class Account implements UserDetails {
         this.age = age;
     }
 
-    private String username;
 
     private String email;
 
@@ -67,11 +66,7 @@ public class Account implements UserDetails {
 
     @Override
     public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
+        return email;
     }
 
 }
