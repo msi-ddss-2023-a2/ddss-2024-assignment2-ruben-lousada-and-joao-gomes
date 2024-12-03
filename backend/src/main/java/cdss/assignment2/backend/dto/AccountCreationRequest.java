@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.Getter;
 
 public class AccountCreationRequest {
+    @Email
     private String email;
 
     private String password;

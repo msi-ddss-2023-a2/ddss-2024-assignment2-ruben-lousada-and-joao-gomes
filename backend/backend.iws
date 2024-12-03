@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3530e99c-6f31-4d13-8f31-3943e2f88e2a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../interfaces/part1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../interfaces/part1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../interfaces/part1.js" beforeDir="false" afterPath="$PROJECT_DIR$/../interfaces/part1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend.iws" beforeDir="false" afterPath="$PROJECT_DIR$/backend.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/controller/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/dto/AccountCreationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/dto/AccountCreationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/services/AccountService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -389,7 +392,7 @@
       <option name="presentableId" value="Default" />
       <updated>1733167387653</updated>
       <workItem from="1733168338345" duration="5222000" />
-      <workItem from="1733187743076" duration="3969000" />
+      <workItem from="1733187743076" duration="4274000" />
     </task>
     <servers />
   </component>

@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import java.util.regex.Pattern;
 
 import java.util.Optional;
 
@@ -42,6 +43,12 @@ public class AccountService implements UserDetailsService {
         Optional<Account> accountByEmail = this.userRepository.findByUsername(request.getEmail());
         if (accountByEmail.isPresent()) {
             throw new RuntimeException("Username is already in use");
+        }
+
+        String password = request.getPassword();
+
+        if (password.length() > 32 || !pattern.matcher(password).matches()) {
+            throw new RuntimeException("Password is not fittable");
         }
 
         String encodedPass = this.passwordEncoder.encode(request.getPassword());

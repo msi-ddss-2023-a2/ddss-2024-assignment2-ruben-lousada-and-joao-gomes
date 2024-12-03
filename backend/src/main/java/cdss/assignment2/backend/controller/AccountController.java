@@ -4,6 +4,7 @@ import cdss.assignment2.backend.dto.AccountCreationRequest;
 import cdss.assignment2.backend.model.Account;
 import cdss.assignment2.backend.repository.UserRepository;
 import cdss.assignment2.backend.services.AccountService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ public class AccountController {
     }
 
     @PostMapping
-    public Account createAccount(@RequestBody  AccountCreationRequest accountCreationRequest) {
+    public Account createAccount(@RequestBody @Valid AccountCreationRequest accountCreationRequest) {
         return this.accountService.signup(accountCreationRequest);
     }
 }
