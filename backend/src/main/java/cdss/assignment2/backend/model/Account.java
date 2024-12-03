@@ -19,6 +19,16 @@ public class Account implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    private Integer failedLoginAttempts = 0;
+
+    public Integer getFailedLoginAttemps() {
+        return this.failedLoginAttempts;
+    }
+
+    public void increaseFailedLoginAttemps() {
+        this.failedLoginAttempts++;
+    }
+    
     public Integer getId() {
         return id;
     }
