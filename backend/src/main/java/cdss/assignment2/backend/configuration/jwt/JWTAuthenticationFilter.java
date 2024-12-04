@@ -18,6 +18,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import cdss.assignment2.backend.repository.UserRepository;
 
 import java.io.IOException;
 import java.util.Date;
@@ -28,9 +29,11 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     private final String secret = "secret-key-that-should-come-from-environmental-value";
 
     private final AuthenticationManager authenticationManager;
+    private final UserRepository userRepository;
 
-    public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
+    public JWTAuthenticationFilter(AuthenticationManager authenticationManager, UserRepository userRepository) {
         this.authenticationManager = authenticationManager;
+        this.userRepository = userRepository;
     }
 
     @SneakyThrows
@@ -41,8 +44,10 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     ) throws AuthenticationException {
         try {
             AccountLoginRequest accountLoginRequest = new ObjectMapper().readValue(request.getInputStream(), AccountLoginRequest.class);
-            AbstractAuthenticationToken authenticationToken;
-            authenticationToken = new UsernamePasswordAuthenticationToken(accountLoginRequest.getUsername(), accountLoginRequest.getPassword());
+            AbstractAuthenticationToken authenticationToken =  new UsernamePasswordAuthenticationToken(accountLoginRequest.getUsername(), accountLoginRequest.getPassword());
+            if (userRepository.findByUsername(accountLoginRequest.getUsername()).getFailedLoginAttemps() > 5) {
+                throw new RuntimeException("account locked");
+            }
             return authenticationManager.authenticate(authenticationToken);
         } catch(IOException e) {
             return authenticationManager.authenticate(null);
@@ -73,6 +78,10 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             HttpServletResponse response,
             AuthenticationException failed
     ) throws IOException, ServletException {
+        AccountLoginRequest accountLoginRequest = new ObjectMapper().readValue(request.getInputStream(), AccountLoginRequest.class);
+        userRepository.incrementFailedLoginAttempts(accountLoginRequest.getUsername());
+
+        
         ObjectMapper mapper = new ObjectMapper();
         response.getWriter().print(mapper.writeValueAsString("Could not authenticate"));
         response.setHeader("Content-Type", "application/json;");
