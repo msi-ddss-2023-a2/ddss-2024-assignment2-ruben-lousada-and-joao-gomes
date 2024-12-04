@@ -59,4 +59,12 @@ public class AccountService implements UserDetailsService {
 
         return this.userRepository.save(account);
     }
+
+    public void incrementFailedLoginAttempts(String email) {
+        this.userRepository.incrementFailedLoginAttempts(email);
+    }
+
+    public void resetFailedLoginAttempts(String email) {
+        this.userRepository.resetFailedLoginAttempts(email);
+    }
 }

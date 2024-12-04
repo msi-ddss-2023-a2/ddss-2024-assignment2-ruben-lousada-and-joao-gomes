@@ -6,6 +6,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 @Entity
 public class Book {
@@ -20,4 +22,7 @@ public class Book {
 
     private Double price;
 
+    private Date date;
+
+    private String category;
 }

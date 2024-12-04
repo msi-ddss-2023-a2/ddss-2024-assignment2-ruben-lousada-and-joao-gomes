@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3530e99c-6f31-4d13-8f31-3943e2f88e2a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/controller/BookController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/dto/BookCreationRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/repository/BookRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/services/BookService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend.iws" beforeDir="false" afterPath="$PROJECT_DIR$/backend.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/controller/AccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/dto/AccountCreationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/dto/AccountCreationRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/services/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cdss/assignment2/backend/model/Book.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -254,27 +255,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.BackendApplication.executor": "Run",
-    "Docker..devcontainer: Compose Deployment.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.BackendApplication.executor": "Run",
-    "git-widget-placeholder": "spring__boot",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Ruben/Desktop/cdss/ddss-2024-assignment2-ruben-lousada-and-joao-gomes/interfaces",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.BackendApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Docker..devcontainer: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.BackendApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;spring__boot&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ruben/Desktop/cdss/ddss-2024-assignment2-ruben-lousada-and-joao-gomes/interfaces&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cdss.assignment2.backend.controller" />
+      <recent name="cdss.assignment2.backend.repository" />
+      <recent name="cdss.assignment2.backend.services" />
+      <recent name="cdss.assignment2.backend.dto" />
+    </key>
+  </component>
   <component name="RunManager" selected="Spring Boot.BackendApplication">
     <configuration selected="false" default="true" type="Applet" factoryName="Applet">
       <module name="" />
@@ -392,7 +401,8 @@
       <option name="presentableId" value="Default" />
       <updated>1733167387653</updated>
       <workItem from="1733168338345" duration="5222000" />
-      <workItem from="1733187743076" duration="4274000" />
+      <workItem from="1733187743076" duration="4322000" />
+      <workItem from="1733258812150" duration="4053000" />
     </task>
     <servers />
   </component>

@@ -29,6 +29,7 @@ public class SecurityConfiguration {
 
     private final AccountService accountService;
 
+
     @Lazy
     public SecurityConfiguration(AccountService accountService) {
         this.accountService = accountService;
@@ -44,7 +45,7 @@ public class SecurityConfiguration {
                             .requestMatchers(HttpMethod.GET, "/api/v**/**").permitAll()
                             .anyRequest().authenticated()
                 )
-                .addFilter(new JWTAuthenticationFilter(authenticationManager()))
+                .addFilter(new JWTAuthenticationFilter(authenticationManager(), accountService))
                 .addFilter(new JWTFilterValidator(authenticationManager(), this.accountService))
                 .sessionManagement(session ->
                     session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
