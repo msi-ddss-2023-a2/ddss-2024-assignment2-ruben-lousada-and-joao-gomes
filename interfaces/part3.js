@@ -147,3 +147,20 @@ async function insertData(event) {
         })
     }
 }
+
+async function checkLogin() {
+    console.log(localStorage.getItem("jwt"))
+    const response = await fetch('http://localhost:8090/accounts/checkAuth', {
+        method: 'GET',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': "Bearer " + localStorage.getItem("jwt"),
+        }
+    })
+
+    if ((await response.text()) != "true") {
+        document.location = "index.html";
+    }
+}
+
+checkLogin()

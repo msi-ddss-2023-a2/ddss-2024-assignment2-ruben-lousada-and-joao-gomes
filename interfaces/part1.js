@@ -13,9 +13,12 @@ async function login(event) {
 
     if (good.ok) {
         alert("Login successfully")
+        localStorage.setItem("jwt", await good.text())
     } else {
         alert("Error logging in")
+        localStorage.removeItem("jwt")
     }
+
 }
 
 function validatePassword(password) {

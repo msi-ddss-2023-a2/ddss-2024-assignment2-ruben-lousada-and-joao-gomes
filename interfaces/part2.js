@@ -18,8 +18,6 @@ async function getData() {
     }
 }
 
-getData()
-
 async function handleGoodSubmit(event) {
     event.preventDefault()
     const textValue = document.getElementById('c_text').value;
@@ -44,3 +42,22 @@ async function handleBadSubmit(event) {
     })
     console.log(bad)
 }
+
+async function checkLogin() {
+    console.log(localStorage.getItem("jwt"))
+    const response = await fetch('http://localhost:8090/accounts/checkAuth', {
+        method: 'GET',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': "Bearer " + localStorage.getItem("jwt"),
+        }
+    })
+
+    if ((await response.text()) != "true") {
+        document.location = "index.html";
+    }
+}
+
+checkLogin().then(a => {
+    getData()
+})
