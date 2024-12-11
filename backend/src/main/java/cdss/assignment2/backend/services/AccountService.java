@@ -3,6 +3,8 @@ package cdss.assignment2.backend.services;
 import cdss.assignment2.backend.dto.AccountCreationRequest;
 import cdss.assignment2.backend.model.Account;
 import cdss.assignment2.backend.repository.UserRepository;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -66,5 +68,17 @@ public class AccountService implements UserDetailsService {
 
     public void resetFailedLoginAttempts(String email) {
         this.userRepository.resetFailedLoginAttempts(email);
+    }
+
+    public boolean isLoggedIn() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return false;
+        }
+
+        System.out.println(authentication.getPrincipal());
+        return !(authentication.getPrincipal() instanceof String
+                && authentication.getPrincipal().equals("anonymousUser"));
     }
 }

@@ -2,10 +2,8 @@ package cdss.assignment2.backend.controller;
 
 import cdss.assignment2.backend.dto.AccountCreationRequest;
 import cdss.assignment2.backend.model.Account;
-import cdss.assignment2.backend.repository.UserRepository;
 import cdss.assignment2.backend.services.AccountService;
 import jakarta.validation.Valid;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("accounts")
@@ -21,5 +19,10 @@ public class AccountController {
     @PostMapping
     public Account createAccount(@RequestBody @Valid AccountCreationRequest accountCreationRequest) {
         return this.accountService.signup(accountCreationRequest);
+    }
+
+    @GetMapping(path = "checkAuth")
+    public boolean isAuthenticated() {
+        return accountService.isLoggedIn();
     }
 }
