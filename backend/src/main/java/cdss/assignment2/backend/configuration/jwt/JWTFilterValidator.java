@@ -23,7 +23,7 @@ public class JWTFilterValidator extends BasicAuthenticationFilter {
     /*
         TODO: Make secret use env variable
      */
-    private final String secret = "secret-key-that-should-come-from-environmental-value";
+    private final String secret = System.getProperty("hashing-secret");
 
     private final AccountService accountService;
 

@@ -30,7 +30,7 @@ import java.util.Optional;
 @PropertySource(value = {"classpath:application.properties"})
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    private final String secret = "secret-key-that-should-come-from-environmental-value";
+    private final String secret = System.getProperty("hashing-secret");
 
     private final AuthenticationManager authenticationManager;
     private final AccountService accountService;

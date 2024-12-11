@@ -1,5 +1,7 @@
 package cdss.assignment2.backend.dto;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class BookCreationRequest {
@@ -12,6 +14,16 @@ public class BookCreationRequest {
     private Date date;
 
     private String category;
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    private String text;
 
     public String getCategory() {
         return category;

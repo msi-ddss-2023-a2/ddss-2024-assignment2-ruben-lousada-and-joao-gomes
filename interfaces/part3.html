@@ -20,7 +20,7 @@
     <head>
         <title>DDSS PA2 - Part 1.3</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta id="viewport" content="width=device-width, initial-scale=1.0">
         <!--
         V2 info:
             - corrected a few naming bugs in the inputs
@@ -47,9 +47,7 @@
 
                 <tr><td>
 
-                        <form action="/part3_vulnerable">
-
-
+                        <form onsubmit="handleBadSubmit(event)">
                             <table border="1" cellpadding="1" style="font-size: 10pt; width: 400px; background-color:#f1f1f1">
                                 <thead>
                                     <tr>
@@ -62,72 +60,41 @@
 
                                     <tr>
                                         <td valign="middle">Title</td>
-                                        <td style="border-width: 1pt"><input type="text"  name="v_name" maxlength="200"  value="" size="20"></td>
+                                        <td style="border-width: 1pt"><input type="text"  id="v_id" maxlength="200"  value="" size="20"></td>
                                     </tr>
                                     <tr>
                                         <td valign="middle">Author</td>
-                                        <td style="border-width: 1pt"><input type="text"  name="v_author" maxlength="100"  value="" size="20"></td>
+                                        <td style="border-width: 1pt"><input type="text"  id="v_author" maxlength="100"  value="" size="20"></td>
                                     </tr>
 
                                     <tr>
                                         <td valign="middle">Category</td>
-                                        <td style="border-width: 1pt"><select name="v_category_id"><option value="">All</option><option value="2" >Databases</option><option value="3" >HTML &amp; Web design</option><option value="1" >Programming</option></select></td>
+                                        <td style="border-width: 1pt"><select id="v_category_id"><option value="">All</option><option value="databases" >Databases</option><option value="html_web_design" >HTML &amp; Web design</option><option value="programming" >Programming</option></select></td>
                                     </tr>
                                     <tr>
                                         <td valign="middle">Price more then</td>
-                                        <td style="border-width: 1pt"><input type="text"  name="v_pricemin" maxlength="100" value="" size="10"></td>
+                                        <td style="border-width: 1pt"><input type="text"  id="v_pricemin" maxlength="100" value="" size="10"></td>
                                     </tr>
                                     <tr>
                                         <td valign="middle">Price less then</td>
-                                        <td style="border-width: 1pt"><input type="text"  name="v_pricemax" maxlength="100" value="" size="10"></td>
+                                        <td style="border-width: 1pt"><input type="text"  id="v_pricemax" maxlength="100" value="" size="10"></td>
                                     </tr>
 
 
-                                    <tr>
+                                    <!--<tr>
                                         <td colspan="2" align="center" valign="middle">Advanced</td>
-                                    </tr>
-                                    <tr>
-                                        <td valign="middle">
-                                            Search For:<br>
-                                        </td>
-                                        <td >
-                                            <input size=35 name="v_search_input">
-                                        </td>
-                                    </tr>
-                                    <tr><td valign="middle">
-                                            Within: 
-                                        </td>
-                                        <td><select name="v_search_field" size=1>
-                                                <option value="any" selected>Anywhere</option>
-                                                <option value="title">Title</option>
-                                                <option value="authors">Authors</option>
-                                                <option value="desc">Description</option>
-                                                <option value="keys">Keywords</option>
-                                                <option value="notes">Notes</option>
-                                            </select>
-                                        </td>
-                                    </tr>
+                                    </tr>-->
                                     <!-- Allow "any," "all," or "phrase" -->
-                                    <tr>
-                                        <td valign="middle">
-                                            Match: 
-                                        </td>
-                                        <td>
-                                            <input type=radio name="v_radio_match" value="any" checked="checked">Any word <br>
-                                            <input type=radio name="v_radio_match" value="all" >All words <br>
-                                            <input type=radio name="v_radio_match" value="phrase">Exact phrase<br>
-                                        </td>
-                                    </tr>
                                     <!-- Date range criteria -->
                                     <tr>
                                         <td colspan="2" align="center">Date</td>
                                     </tr>
                                     <tr>
                                         <td align=right>
-                                            <input type=radio name="v_sp_d" value="custom" checked>
+                                            <input type=radio id="v_custom" name="v_sp_d" value="custom" checked>
                                         </td>
                                         <td>
-                                            <select name="v_sp_date_range" size=1>
+                                            <select id="v_sp_date_range" size=1>
                                                 <option value=-1 selected>Anytime</option>
                                                 <option value=7>Within the last week</option>
                                                 <option value=14>Within the last 2 weeks</option>
@@ -144,8 +111,8 @@
                                         <td rowspan=2 align=right>
                                             <input type=radio name="v_sp_d" value=specific>
                                         </td>
-                                        <td>From:
-                                            <select name="v_sp_start_month" size=1>
+                                        <td colspan="2" >From:
+                                            <select id="v_sp_start_month" size=1>
                                                 <option value=0 selected></option>
                                                 <option value=1>January</option>
                                                 <option value=2>February</option>
@@ -160,7 +127,7 @@
                                                 <option value=11>November</option>
                                                 <option value=12>December</option>
                                             </select>
-                                            <select name="v_sp_start_day" size=1>
+                                            <select id="v_sp_start_day" size=1>
                                                 <option value=0 selected></option>
                                                 <option value=1>1</option>
                                                 <option value=2>2</option>
@@ -195,12 +162,12 @@
                                                 <option value=31>31</option>
                                             </select>
                                             <!--comma-->,
-                                            <input size=4 name="v_sp_start_year">
+                                            <input size=4 id="v_sp_start_year">
                                         </td></tr>
                                     <tr>
-                                        <td>To:
+                                        <td colspan="2" >To:
 
-                                            <select name="v_sp_end_month" size=1>
+                                            <select id="v_sp_end_month" size=1>
                                                 <option value=0 selected></option>
                                                 <option value=1>January</option>
                                                 <option value=2>February</option>
@@ -215,7 +182,7 @@
                                                 <option value=11>November</option>
                                                 <option value=12>December</option>
                                             </select>
-                                            <select name="v_sp_end_day" size=1>
+                                            <select id="v_sp_end_day" size=1>
                                                 <option value=0 selected></option>
                                                 <option value=1>1</option>
                                                 <option value=2>2</option>
@@ -250,7 +217,7 @@
                                                 <option value=31>31</option>
                                             </select>
                                             <!--comma-->,
-                                            <input size=4 name="v_sp_end_year">
+                                            <input size=4 id="v_sp_end_year">
                                         </td></tr>
 
 
@@ -261,35 +228,24 @@
                                     <!-- List box selects number of results to show per page -->
                                     <tr>
                                         <td valign="middle">
-                                            Show: 
+                                            Show:
                                         </td>
                                         <td>
-                                            <select name="v_sp_c" size=1>
+                                            <select id="v_sp_c" size=1>
                                                 <option value=5>5</option>
                                                 <option value=10 selected>10</option>
                                                 <option value=25>25</option>
                                                 <option value=50>50</option>
                                                 <option value=100>100</option>
-                                            </select> results 
+                                            </select> results
                                             <!-- Show or hide summaries in search results -->
-                                            <select name="v_sp_m" size=1>
+                                            <!--<select id="v_sp_m" size=1>
                                                 <option value=1 selected>with</option>
                                                 <option value=0>without</option>
-                                            </select> summaries<br>
+                                            </select> summaries<br>-->
                                         </td>
                                     </tr>
                                     <!-- Sort results by relevance or by date -->
-                                    <tr>
-                                        <td valign="middle">
-                                            Sort by: 
-                                        </td>
-                                        <td >
-                                            <select name="v_sp_s" size=1>
-                                                <option value=0 selected>relevance</option>
-                                                <option value=1>date</option>
-                                            </select>
-                                        </td>
-                                    </tr>
 
 
 
@@ -306,12 +262,12 @@
                             </table>
 
 
-                        </form> 
-                    </td>
-                    <td>    
+                        </form>
                     </td>
                     <td>
-                        <form action="/part3_correct">
+                    </td>
+                    <td>
+                        <form onsubmit="handleGoodSubmit(event)">
                             <table border="1" cellpadding="1" style="font-size: 10pt; width: 400px; background-color:   #f19191">
                                 <thead>
                                     <tr>
@@ -324,82 +280,41 @@
 
                                     <tr>
                                         <td valign="middle">Title</td>
-                                        <td style="border-width: 1pt"><input type="text"  name="c_name" maxlength="200"  value="" size="20"></td>
+                                        <td style="border-width: 1pt"><input type="text"  id="c_id" maxlength="200"  value="" size="20"></td>
                                     </tr>
                                     <tr>
                                         <td valign="middle">Author</td>
-                                        <td style="border-width: 1pt"><input type="text"  name="c_author" maxlength="100"  value="" size="20"></td>
+                                        <td style="border-width: 1pt"><input type="text"  id="c_author" maxlength="100"  value="" size="20"></td>
                                     </tr>
 
                                     <tr>
                                         <td valign="middle">Category</td>
-                                        <td style="border-width: 1pt"><select name="c_category_id"><option value="">All</option><option value="2" >Databases</option><option value="3" >HTML &amp; Web design</option><option value="1" >Programming</option></select></td>
+                                        <td style="border-width: 1pt"><select id="c_category_id"><option value="">All</option><option value="databases" >Databases</option><option value="html_web_design" >HTML &amp; Web design</option><option value="programming" >Programming</option></select></td>
                                     </tr>
                                     <tr>
                                         <td valign="middle">Price more then</td>
-                                        <td style="border-width: 1pt"><input type="text"  name="c_pricemin" maxlength="100" value="" size="10"></td>
+                                        <td style="border-width: 1pt"><input type="text"  id="c_pricemin" maxlength="100" value="" size="10"></td>
                                     </tr>
                                     <tr>
                                         <td valign="middle">Price less then</td>
-                                        <td style="border-width: 1pt"><input type="text"  name="c_pricemax" maxlength="100" value="" size="10"></td>
+                                        <td style="border-width: 1pt"><input type="text"  id="c_pricemax" maxlength="100" value="" size="10"></td>
                                     </tr>
 
 
-                                    <tr>
+                                    <!--<tr>
                                         <td colspan="2" align="center" valign="middle">Advanced</td>
-                                    </tr>
-                                    <tr>
-                                        <td valign="middle">
-                                            Search For:<br>
-                                        </td>
-                                        <td >
-                                            <input size=35 name="c_search_input">
-                                        </td>
-                                    </tr>
-                                    <tr><td valign="middle">
-                                            Within: 
-                                        </td><td><select name="c_search_field" size=1>
-                                                <!--                        
-                                        category_id          int NOT NULL,
-                                        name                 varchar(255) NOT NULL,
-                                        author               varchar(100) NULL,
-                                        notes                text NULL,
-                                        is_recommended       tinyint NULL DEFAULT 0,
-                                        rating               int default 0,
-                                        rating_count         int default 0
-                                                -->
-
-
-                                                <option value="any" selected>Anywhere</option>
-                                                <option value="title">Title</option>
-                                                <option value="authors">Authors</option>
-                                                <option value="desc">Description</option>
-                                                <option value="keys">Keywords</option>
-                                                <option value="notes">Notes</option>
-                                            </select>
-                                        </td>
-                                    </tr>
+                                    </tr>-->
                                     <!-- Allow "any," "all," or "phrase" -->
-                                    <tr>
-                                        <td valign="middle">
-                                            Match: 
-                                        </td>
-                                        <td>
-                                            <input type=radio name="c_radio_match" value="any" checked="checked">Any word <br>
-                                            <input type=radio name="c_radio_match" value="all" >All words <br>
-                                            <input type=radio name="c_radio_match" value="phrase">Exact phrase<br>
-                                        </td>
-                                    </tr>
                                     <!-- Date range criteria -->
                                     <tr>
                                         <td colspan="2" align="center">Date</td>
                                     </tr>
                                     <tr>
                                         <td align=right>
-                                            <input type=radio name="c_sp_d" value="custom" checked>
+                                            <input type=radio id="c_custom" name="c_sp_d" value="custom" checked>
                                         </td>
                                         <td>
-                                            <select name="c_sp_date_range" size=1>
+                                            <select id="c_sp_date_range" size=1>
                                                 <option value=-1 selected>Anytime</option>
                                                 <option value=7>Within the last week</option>
                                                 <option value=14>Within the last 2 weeks</option>
@@ -416,8 +331,8 @@
                                         <td rowspan=2 align=right>
                                             <input type=radio name="c_sp_d" value=specific>
                                         </td>
-                                        <td>From:
-                                            <select name="c_sp_start_month" size=1>
+                                        <td colspan="2" >From:
+                                            <select id="c_sp_start_month" size=1>
                                                 <option value=0 selected></option>
                                                 <option value=1>January</option>
                                                 <option value=2>February</option>
@@ -432,7 +347,7 @@
                                                 <option value=11>November</option>
                                                 <option value=12>December</option>
                                             </select>
-                                            <select name="c_sp_start_day" size=1>
+                                            <select id="c_sp_start_day" size=1>
                                                 <option value=0 selected></option>
                                                 <option value=1>1</option>
                                                 <option value=2>2</option>
@@ -467,13 +382,13 @@
                                                 <option value=31>31</option>
                                             </select>
                                             <!--comma-->,
-                                            <input size=4 name="c_sp_start_year">
+                                            <input size=4 id="c_sp_start_year">
                                         </td></tr>
                                     <tr>
-                                        <td>To:
+                                        <td colspan="2" >To:
 
-                                            <select name="c_sp_end_month" size=1>
-                                                <option value=0 selected> </option>
+                                            <select id="c_sp_end_month" size=1>
+                                                <option value=0 selected></option>
                                                 <option value=1>January</option>
                                                 <option value=2>February</option>
                                                 <option value=3>March</option>
@@ -487,7 +402,7 @@
                                                 <option value=11>November</option>
                                                 <option value=12>December</option>
                                             </select>
-                                            <select name="c_sp_end_day" size=1>
+                                            <select id="c_sp_end_day" size=1>
                                                 <option value=0 selected></option>
                                                 <option value=1>1</option>
                                                 <option value=2>2</option>
@@ -522,7 +437,7 @@
                                                 <option value=31>31</option>
                                             </select>
                                             <!--comma-->,
-                                            <input size=4 name="c_sp_end_year">
+                                            <input size=4 id="c_sp_end_year">
                                         </td></tr>
 
 
@@ -536,7 +451,7 @@
                                             Show: 
                                         </td>
                                         <td>
-                                            <select name="c_sp_c" size=1>
+                                            <select id="c_sp_c" size=1>
                                                 <option value=5>5</option>
                                                 <option value=10 selected>10</option>
                                                 <option value=25>25</option>
@@ -544,24 +459,13 @@
                                                 <option value=100>100</option>
                                             </select> results 
                                             <!-- Show or hide summaries in search results -->
-                                            <select name="c_sp_m" size=1>
+                                            <!--<select id="c_sp_m" size=1>
                                                 <option value=1 selected>with</option>
                                                 <option value=0>without</option>
-                                            </select> summaries<br>
+                                            </select> summaries<br>-->
                                         </td>
                                     </tr>
                                     <!-- Sort results by relevance or by date -->
-                                    <tr>
-                                        <td valign="middle">
-                                            Sort by: 
-                                        </td>
-                                        <td >
-                                            <select name="c_sp_s" size=1>
-                                                <option value=0 selected>relevance</option>
-                                                <option value=1>date</option>
-                                            </select>
-                                        </td>
-                                    </tr>
 
 
 
@@ -580,6 +484,15 @@
                     </td>
                 </tr>
             </table>
+
+            <form onsubmit="insertData(event)">
+                <button type="submit"> add values to database </button>
+            </form>
+
+            <div id="values_here">
+
+            </div>
         </div>
+    <script src="part3.js"></script>
     </body>
 </html>
