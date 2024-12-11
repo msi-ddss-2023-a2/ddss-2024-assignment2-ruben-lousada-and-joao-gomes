@@ -44,5 +44,3 @@ async function handleBadSubmit(event) {
     })
     console.log(bad)
 }
-
-console.log(localStorage.getItem("123"))

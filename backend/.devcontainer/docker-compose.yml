@@ -11,15 +11,15 @@ services:
       POSTGRES_DB: 123
     networks:
       - server-network
-  server:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    command: tail -f /dev/null
-    networks:
-      - server-network
-    volumes:
-      - ..:/workspace
+  # server:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   command: tail -f /dev/null
+  #   networks:
+  #     - server-network
+  #   volumes:
+  #     - ..:/workspace
 
 networks:
   server-network:
