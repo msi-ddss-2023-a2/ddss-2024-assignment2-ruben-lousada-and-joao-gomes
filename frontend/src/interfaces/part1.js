@@ -16,6 +16,10 @@ async function login(event) {
     } else {
         alert("Error logging in")
     }
+
+    console.log(good)
+    localStorage.setItem("123", "123")
+    console.log(localStorage.getItem("123"))
 }
 
 function validatePassword(password) {

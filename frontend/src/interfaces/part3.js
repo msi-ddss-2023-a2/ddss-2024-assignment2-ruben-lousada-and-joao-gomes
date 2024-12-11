@@ -147,3 +147,5 @@ async function insertData(event) {
         })
     }
 }
+
+console.log(localStorage.getItem("123"))
