@@ -61,5 +61,5 @@ After the required commands and having started the web application, they will av
 
 # Authors
 
-- Nuno Antunes <nmsa@dei.uc.pt>
-- Marco Vieira <mvieira@dei.uc.pt>
+- Ruben Lousada 2024135137 uc2024135137@student.uc.pt
+- João Gomes 2024137741 uc2024137741@student.uc.pt
