@@ -3,6 +3,7 @@ async function login(event) {
     event.preventDefault()
     const email = document.getElementById('login_email').value;
     const password = document.getElementById('login_password').value;
+
     const good = await fetch('http://localhost:8090/login', {
         method: 'POST',
         headers: {
@@ -33,6 +34,12 @@ async function register(event) {
     event.preventDefault()
     const email = document.getElementById('register_email').value;
     const password = document.getElementById('register_password').value;
+    const confirm = document.getElementById('confirm_register_password').value;
+    console.log(password, confirm)
+    if (password !== confirm) {
+        alert("Passwords do not match")
+        return
+    }
 
     if (!validatePassword(password)) {
         alert("Password must be at least 8 characters long, include at least one uppercase letter, one lowercase letter, one number, and one special character. Maximum length of 32.")

@@ -2,14 +2,13 @@ async function getData() {
     const url = "http://localhost:8090/text";
     try {
         const response = await fetch(url);
-        console.log(response)
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
         }
 
         const json = await response.json();
         let element = document.getElementById("tbody");
-
+        element.innerHTML = ""
         for (const value of json) {
             element.innerHTML += "<tr><td>" + value.text + " </td></tr>";
         }
@@ -28,6 +27,8 @@ async function handleGoodSubmit(event) {
         },
         body: JSON.stringify({ text: textValue })
     })
+
+    await getData()
 }
 
 async function handleBadSubmit(event) {
@@ -40,7 +41,8 @@ async function handleBadSubmit(event) {
         },
         body: JSON.stringify({ text: textValue })
     })
-    console.log(bad)
+
+    await getData()
 }
 
 async function checkLogin() {

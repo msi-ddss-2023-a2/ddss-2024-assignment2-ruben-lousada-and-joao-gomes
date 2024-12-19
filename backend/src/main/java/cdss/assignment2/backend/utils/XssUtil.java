@@ -7,6 +7,6 @@ public class XssUtil {
             return null;
         }
 
-        return input.replace("<", "&lt;").replace(">", "&gt;");
+        return input.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
     }
 }

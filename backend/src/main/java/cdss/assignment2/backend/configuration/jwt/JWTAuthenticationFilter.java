@@ -81,8 +81,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         accountService.resetFailedLoginAttempts(account.getUsername());
 
-        String jwtToken = JWT.create().
-                withSubject(account.getUsername())
+        String jwtToken = JWT.create()
+                .withSubject(account.getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + 60 * 1000 * 60 * 24))
                 .sign(Algorithm.HMAC512(secret));
 

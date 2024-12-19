@@ -5,7 +5,6 @@ import cdss.assignment2.backend.dto.TextCreationRequest;
 import cdss.assignment2.backend.model.Book;
 import cdss.assignment2.backend.model.Text;
 import cdss.assignment2.backend.repository.BookRepository;
-import cdss.assignment2.backend.repository.BookRepositoryCustomImpl;
 import cdss.assignment2.backend.repository.TextRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -23,12 +22,10 @@ import java.util.List;
 @Service
 public class BookService {
 
-    private final BookRepositoryCustomImpl bookRepositoryCustom;
     private final BookRepository bookRepository;
 
-    public BookService(BookRepository bookRepository, BookRepositoryCustomImpl bookRepositoryCustom) {
+    public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
-        this.bookRepositoryCustom = bookRepositoryCustom;
     }
 
     public Book createBook(BookCreationRequest bookCreationRequest) {
